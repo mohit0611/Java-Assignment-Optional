@@ -1,0 +1,25 @@
+
+package optionals;
+public class PhoneBookCrawler {
+    private PhoneBook2 pBook;
+    public PhoneBookCrawler(PhoneBook2 pBook) {
+        this.pBook = pBook;    }
+    public String findPhoneNumberByNameAndPunishIfNothingFound(String name){
+        return null;    }
+    public String findPhoneNumberByNameOrNameByPhoneNumber(String name, String phoneNumber){
+        return null;    }
+    public String findPhoneNumberByNameAndPrintPhoneBookIfNothingFound(String name){
+        return null;    }
+    public PhoneBook2 getPhoneBook(){
+        return pBook;    }
+}
+package optionals;
+import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+public class PhoneBookCrawlerTestExercise3Test {
+    private PhoneBookCrawler pBookCrawler = new PhoneBookCrawler(new PhoneBook2());
+    @Test
+    public void findPhoneNumberByNameAndReturnEntirePhoneBookIfNothingFound() {
+        String pBook = pBookCrawler.findPhoneNumberByNameAndPrintPhoneBookIfNothingFound("Mahesh");
+        assertThat(pBook).isEqualTo("PhoneBook{phoneBookEntries={Raj=9999999999, Ram=8888888888, Rakesh=6666666666}}");    }
+}

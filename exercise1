@@ -1,0 +1,50 @@
+package optionals;
+import java.util.*;
+public class PhoneBook {
+    private static final HashMap<String, String> phoneNumber =new HashMap<String, String>() {
+        {   put("Raj", "9999999999");
+            put("Ram", "8888888888");
+            put("Rakesh", "6666666666");     }    };
+    private HashMap<String, String> pBookEntries = phoneNumber;
+    PhoneBook() { }
+    public HashMap<String, String> getPhoneBookEntries() {
+        return pBookEntries;    }
+    public Optional<String> findNameByphoneNumber(String phoneNumber){
+        return null;    }
+        public Optional<String> findphoneNumberByName(String name){
+            return null;    }
+    @Override
+    public String toString() {
+        System.out.println("Hello from PhoneBook's toString method");
+        return "PhoneBook{" + "phoneBookEntries=" + pBookEntries + '}';    }
+}
+package optionals;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import static org.assertj.core.api.Assertions.assertThat;
+public class PhoneBookTest {
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+    private PhoneBook pBook = new PhoneBook();
+    @Test
+    public void findphoneNumberByName() {
+        Optional<String> phoneNo = pBook.findphoneNumberByName("Raj");
+        assertThat(phoneNo.get()).isEqualTo("9999999999");    }
+    @Test
+    public void findphoneNumberByName_NotFound() {
+        expectedException.expect(NoSuchElementException.class);
+        Optional<String> phoneNo = pBook.findphoneNumberByName("Raj");
+        phoneNo.get();    }
+    @Test
+    public void findNameByphoneNumber() {
+        Optional<String> name = pBook.findNameByphoneNumber("9999999999");
+        assertThat(name.get()).isEqualTo("Raj");    }
+    @Test
+    public void findNameByphoneNumber_NotFound() {
+        expectedException.expect(NoSuchElementException.class);
+        Optional<String> phoneNumber = phoneBook.findphoneNumberByName("123");
+        phoneNumber.get();    }
+}
